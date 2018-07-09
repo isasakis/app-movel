@@ -48,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null){
-                    startActivity(new Intent(MainActivity.this, DashboardProfessorActivity.class));
+                    if(tipo.getSelectedItem().toString().equals("Professor"))
+                        startActivity(new Intent(MainActivity.this, DashboardProfessorActivity.class));
+                    else
+                        startActivity(new Intent(MainActivity.this, DashboardAlunoActivity.class));
                 }
             }
         };
@@ -63,10 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void login(){
         String email = editEmail.getText().toString(); //converte para string
-
         String senha = editSenha.getText().toString(); //converte para string
-
-        String tipoString = tipo.getSelectedItem().toString();
 
         if(TextUtils.isEmpty(email) || TextUtils.isEmpty(senha)){
             Toast.makeText(MainActivity.this, "Os campos devem ser preenchidos", Toast.LENGTH_LONG).show();

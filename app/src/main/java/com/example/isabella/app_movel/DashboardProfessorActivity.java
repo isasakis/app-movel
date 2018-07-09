@@ -83,17 +83,13 @@ public class DashboardProfessorActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_turmas) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_mensagens) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_perfil) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();

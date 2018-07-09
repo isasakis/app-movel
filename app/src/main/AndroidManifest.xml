@@ -16,25 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--
-            <activity
-            android:name="com.example.isabella.app_movel.spinner_tipo.SpinnerTipo"
-            android:label="@string/app_name" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-        -->
-
-        <activity android:name=".DashboardActivity" />
+        <activity
+            android:name=".DashboardAlunoActivity"
+            android:label="@string/title_activity_dashboard_aluno" />
         <activity
             android:name=".DashboardProfessorActivity"
             android:label="@string/title_activity_dashboard_professor"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
