@@ -23,7 +23,11 @@
             android:name=".DashboardProfessorActivity"
             android:label="@string/title_activity_dashboard_professor"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity android:name=".TurmasListActivity">
+            <meta-data
+               android:name="android.support.PARENT_ACTIVITY"
+               android:value=".DashboardProfessorActivity" />
+        </activity>
     </application>
 
 </manifest>

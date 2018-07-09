@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -84,7 +85,11 @@ public class DashboardProfessorActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_turmas) {
-            // Handle the camera action
+            setTitle("Lista turmas");
+            TurmasListFragment turmasListFragment = new TurmasListFragment();
+            FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction1.replace(R.id.frameDashProfessor, turmasListFragment, "FragmentTurmas");
+            fragmentTransaction1.commit();
         } else if (id == R.id.nav_mensagens) {
 
         } else if (id == R.id.nav_perfil) {
