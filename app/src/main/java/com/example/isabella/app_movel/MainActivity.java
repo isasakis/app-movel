@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 if(firebaseAuth.getCurrentUser() != null){
                     if(tipo.getSelectedItem().toString().equals("Professor"))
                         startActivity(new Intent(MainActivity.this, DashboardProfessorActivity.class));
-                    else
+                    else if(tipo.getSelectedItem().toString().equals("Pai de aluno"))
                         startActivity(new Intent(MainActivity.this, DashboardAlunoActivity.class));
                 }
             }

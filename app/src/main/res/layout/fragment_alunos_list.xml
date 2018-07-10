@@ -3,23 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TurmasListFragment">
+    tools:context=".AlunosListFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Turmas"
-        android:textSize="24sp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="20dp"/>
 
     <ListView
-        android:id="@+id/listViewTurmas"
+        android:id="@+id/listViewAlunos"
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp" />
+        android:layout_marginTop="10dp" />
 
 </FrameLayout>

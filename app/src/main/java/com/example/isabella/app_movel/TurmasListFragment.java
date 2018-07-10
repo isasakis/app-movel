@@ -1,13 +1,21 @@
 package com.example.isabella.app_movel;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,11 +35,25 @@ public class TurmasListFragment extends Fragment {
     DatabaseReference databaseTurmas;
     List<Turma> turmaList;
     View minhasTurmas;
+    onTurmaSelectedListener listener;
 
     public TurmasListFragment() {
         // Required empty public constructor
     }
 
+    public interface onTurmaSelectedListener{
+        public void onItemSelected(Integer cod);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (onTurmaSelectedListener) context;
+        } catch (ClassCastException e){
+            throw new ClassCastException(context.toString()+ " deve implementar onTurmaSelectedListener");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,6 +64,21 @@ public class TurmasListFragment extends Fragment {
         listViewTurmas = (ListView) minhasTurmas.findViewById(R.id.listViewTurmas);
         databaseTurmas = FirebaseDatabase.getInstance().getReference("turmas");
         turmaList = new ArrayList<>();
+
+        listViewTurmas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Turma t = turmaList.get(position);
+                listener.onItemSelected(t.getCodTurma());
+
+                /*getActivity().setTitle("Lista alunos turma " + t.getCodTurma() + "");
+                AlunosListFragment turmasListFragment = new AlunosListFragment();
+                FragmentTransaction fragmentTransaction1 = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction1.replace(R.id.frameDashProfessor, turmasListFragment, "AlunosListFragment");
+                fragmentTransaction1.addToBackStack(null);
+                fragmentTransaction1.commit();*/
+            }
+        });
 
         return minhasTurmas;
     }
