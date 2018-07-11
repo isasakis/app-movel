@@ -22,7 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class DashboardProfessorActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,TurmasListFragment.onTurmaSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        TurmasListFragment.onTurmaSelectedListener,
+        AlunosListFragment.onAlunoSelectedListener{
 
     FirebaseUser user;
     TextView textNome;
@@ -66,10 +68,27 @@ public class DashboardProfessorActivity extends AppCompatActivity
         fragmentTransaction.commit();
     }
 
+
+    @Override
+    public void onAlunoSelected(String key) {
+        setTitle("Informações aluno");
+        InfoAlunoFragment infoAlunoFragment = new InfoAlunoFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameDashProfessor, infoAlunoFragment, "infoAluno");
+        fragmentTransaction.addToBackStack(null);
+        infoAlunoFragment.setKeyAluno(key);
+        fragmentTransaction.commit();
+    }
+
     @Override
     public void onStart() {
         super.onStart();
-
+        setTitle("Lista turmas");
+        TurmasListFragment turmasListFragment = new TurmasListFragment();
+        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction1.replace(R.id.frameDashProfessor, turmasListFragment, "FragmentTurmas");
+        fragmentTransaction1.addToBackStack(null);
+        fragmentTransaction1.commit();
         user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
@@ -107,13 +126,6 @@ public class DashboardProfessorActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -128,12 +140,11 @@ public class DashboardProfessorActivity extends AppCompatActivity
             TurmasListFragment turmasListFragment = new TurmasListFragment();
             FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
             fragmentTransaction1.replace(R.id.frameDashProfessor, turmasListFragment, "FragmentTurmas");
+            fragmentTransaction1.addToBackStack(null);
             fragmentTransaction1.commit();
         } else if (id == R.id.nav_mensagens) {
 
         } else if (id == R.id.nav_perfil) {
-
-        } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
@@ -144,5 +155,4 @@ public class DashboardProfessorActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

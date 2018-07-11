@@ -70,13 +70,6 @@ public class TurmasListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Turma t = turmaList.get(position);
                 listener.onItemSelected(t.getCodTurma());
-
-                /*getActivity().setTitle("Lista alunos turma " + t.getCodTurma() + "");
-                AlunosListFragment turmasListFragment = new AlunosListFragment();
-                FragmentTransaction fragmentTransaction1 = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction1.replace(R.id.frameDashProfessor, turmasListFragment, "AlunosListFragment");
-                fragmentTransaction1.addToBackStack(null);
-                fragmentTransaction1.commit();*/
             }
         });
 

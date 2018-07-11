@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddInfoFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="20dp"
+        android:text="Problema de saúde:"
+        android:layout_marginStart="@dimen/activity_horizontal_margin" />
+
+    <EditText
+        android:id="@+id/addProblema"
+        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="90dp"
+        android:text="Restrição alimentar:" />
+
+    <EditText
+        android:id="@+id/addRestricao"
+        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="110dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="160dp"
+        android:text="Remédios:" />
+
+    <EditText
+        android:id="@+id/addNomeRemedio"
+        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="180dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horário remédio"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="230dp"/>
+
+    <EditText
+        android:id="@+id/addHorarioRemedio"
+        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="250dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Observação remédio"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="300dp"/>
+
+    <EditText
+        android:id="@+id/addObsRemedio"
+        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="320dp"/>
+
+    <Button
+        android:id="@+id/saveInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:text="Salvar"
+        android:layout_marginTop="380dp"
+        android:layout_marginStart="120dp" />
+
+
+</FrameLayout>

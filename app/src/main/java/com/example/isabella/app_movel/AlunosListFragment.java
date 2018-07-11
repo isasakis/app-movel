@@ -1,6 +1,7 @@
 package com.example.isabella.app_movel;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -36,6 +37,11 @@ public class AlunosListFragment extends Fragment {
     DatabaseReference databaseAlunos;
     List<Aluno> alunoList;
     Integer codTurma;
+    onAlunoSelectedListener listener;
+
+    public interface onAlunoSelectedListener{
+        public void onAlunoSelected(String key);
+    }
 
     public AlunosListFragment() {
         // Required empty public constructor
@@ -43,7 +49,16 @@ public class AlunosListFragment extends Fragment {
 
     public void setCodTurma(Integer cod){
         codTurma = cod;
-        System.out.println("COD TURMA alunos fragment: " + cod);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (onAlunoSelectedListener) context;
+        } catch (ClassCastException e){
+            throw new ClassCastException(context.toString()+ " deve implementar onAlunoSelectedListener");
+        }
     }
 
     @Override
@@ -56,6 +71,14 @@ public class AlunosListFragment extends Fragment {
         databaseReference = "alunos/turma"+codTurma+"/";
         listViewAlunos = (ListView) alunos.findViewById(R.id.listViewAlunos);
         databaseAlunos = FirebaseDatabase.getInstance().getReference(databaseReference);
+
+        listViewAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Aluno a = alunoList.get(position);
+                listener.onAlunoSelected(a.getUid());
+            }
+        });
 
         return alunos;
     }
